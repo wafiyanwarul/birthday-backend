@@ -9,7 +9,10 @@ const prayersRoutes = require('./routes/prayers')
 // Middleware
 app.use(
   cors({
-    origin: '*'
+    origin: 'http://192.168.0.221:3000', // Ganti dengan URL frontend Anda
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
+    credentials: true,
   })
 )
 app.use(bodyParser.json())
