@@ -9,7 +9,7 @@ const prayersRoutes = require('./routes/prayers')
 // Middleware
 app.use(
   cors({
-    origin: 'wishtrack-io.up.railway.app', // Ganti dengan URL frontend Anda
+    origin: '*', // Ganti dengan URL frontend Anda
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
     credentials: true,

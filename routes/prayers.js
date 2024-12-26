@@ -6,7 +6,7 @@ const Prayer = require('../models/prayer');
 router.post('/', async (req, res) => {
   try {
     const { prayer_text } = req.body;
-    
+
     // Validasi
     if (!prayer_text || prayer_text.length < 50) {
       return res.status(400).json({
@@ -15,8 +15,9 @@ router.post('/', async (req, res) => {
       });
     }
 
+    // Simpan doa ke database
     const result = await Prayer.create(prayer_text);
-    
+
     res.status(201).json({
       status: 'success',
       message: 'Doa berhasil disimpan',
@@ -24,6 +25,8 @@ router.post('/', async (req, res) => {
     });
   } catch (error) {
     console.error('Error in POST /prayers:', error);
+
+    // Kirim respons JSON bahkan saat terjadi error
     res.status(500).json({
       status: 'error',
       message: 'Terjadi kesalahan saat menyimpan doa'
